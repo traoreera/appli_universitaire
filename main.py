@@ -6,8 +6,8 @@ from ico.ico_loads import *
 import os
 import datetime
 from command.commands import partail_inject_ui_ttk as partial, dropper
-from ico.txt.Readme import *
 import ctypes
+import datetime.datetime
 
 class Root:
 
@@ -153,7 +153,7 @@ class Root:
         
     def LoopTrap(self):
         
-        result = datetime.datetime()
+        result = datetime()
         heure = result.hour
         minute = result.minute
 if __name__ == "__main__":
