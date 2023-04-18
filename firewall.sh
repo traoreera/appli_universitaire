@@ -20,6 +20,7 @@ sudo apt install python3-pip
 #time sleep
 sleep 20
 #Réinitialiser toutes les règles :
+sudo apt install iptables -y
 iptables -t filter -F 
 iptables -t filter -X 
  

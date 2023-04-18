@@ -7,7 +7,6 @@ import os
 import datetime
 from command.commands import partail_inject_ui_ttk as partial, dropper
 import ctypes
-import datetime.datetime
 
 class Root:
 
@@ -28,7 +27,7 @@ class Root:
         self.root.mainloop()
         
     def Root_register(self):
-
+    
         try:
             admin_modes = os.geteuid() == 0 # type: ignore
         except AttributeError:
@@ -151,10 +150,7 @@ class Root:
         self.label_version.place(x=40,y=640)
         self.label_ico.place(x=10,y=630)
         
-    def LoopTrap(self):
-        
-        result = datetime()
-        heure = result.hour
-        minute = result.minute
+    def LoopTrap(self): pass
+    
 if __name__ == "__main__":
     Root()
