@@ -1,0 +1,8 @@
+create database "db.conf.local"
+
+
+
+CREATE TABLE "db.conf.local" (
+	"drop"	INTEGER,
+	"dr"	INTEGER
+);
