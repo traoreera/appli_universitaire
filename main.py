@@ -1,4 +1,4 @@
-import tkinter
+import tkinter as tk
 import tkinter.messagebox as messagebox
 import customtkinter
 from PIL import ImageTk, Image
@@ -24,6 +24,7 @@ class Root:
         Root.HomeFrame(self)
         Root.SegmentButon(self)
         Root.__button(self)
+        Root.chortcut(self)
         self.root.mainloop()
         
     def Root_register(self):
@@ -104,9 +105,16 @@ class Root:
         self.segmentbt =customtkinter.CTkSegmentedButton(master=self.root,
                                                         values=["Command","Configuration","Fichier","Serveur","Aide","Version","quit",
                                                                 "mise a jour","reload","login","logout",],font=("",14),
-                                                        text_color=("blue","white"))
+                                                        text_color=("blue","white"),command=self.bt_segmented)
         self.segmentbt.place(x=200,y =0)     
 
+    def bt_segmented(self,value):
+        #print(value)
+        if value =="quit":
+            try: self.root.quit()
+            except: self.root.destroy()
+            finally:pass
+            
 
     def HomeFrame(self):
         
@@ -118,7 +126,7 @@ class Root:
     
     def __button(self):  
 
-        self.bt_chat = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
+        self.bt_chat = customtkinter.CTkButton(self.Menu_frame,text="Chat",font=("",12),width=40,height=45)
         self.bt_chat.place(x=0,y=50)
 
         ### bt setup all menu bt in one 
@@ -128,6 +136,7 @@ class Root:
         
         self.bt_itech = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
         self.bt_itech.place(x=0,y=150)
+        
         ### bt setup all menu bt in one 
         
         self.setting_bt = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
@@ -136,6 +145,7 @@ class Root:
         
         self.bt_utm = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
         self.bt_utm.place(x=0,y=250)
+        ToolTip(self.bt_utm,text="buton UTM")
         ### bt setup all menu bt in one 
         
         self.bt_quit = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
@@ -152,5 +162,46 @@ class Root:
         
     def LoopTrap(self): pass
     
+
+        
+        
+    def chortcut(self):   
+        def hello(self):
+            print("heu")
+        """"""
+        self.root.bind("<Control-h>",hello)
+
+
+
+class ToolTip:
+    def __init__(self, widget, text):
+        self.widget = widget
+        self.text = text
+        self.widget.bind("<Enter>", self.show_tip)
+        self.widget.bind("<Leave>", self.hide_tip)
+
+    def show_tip(self, event):
+        x, y, cx, cy = self.widget.bbox("insert")
+        x += self.widget.winfo_rootx() + 25
+        y += self.widget.winfo_rooty() + 20
+        # Créer une fenêtre de survol
+        self.tipwindow = tw = tk.Toplevel(self.widget)
+        tw.wm_overrideredirect(True)
+        tw.wm_geometry("+%d+%d" % (x, y))
+        label = tk.Label(tw, text=self.text, justify=tk.LEFT,
+                      background="#ffffe0", relief=tk.SOLID, borderwidth=1,
+                      font=("tahoma", "8", "normal"))
+        label.pack(ipadx=1)
+
+    def hide_tip(self, event):
+        tw = self.tipwindow
+        if tw:
+            tw.destroy()
+
+
+
+
+
+
 if __name__ == "__main__":
     Root()
