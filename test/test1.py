@@ -1,34 +1,29 @@
 
 import tkinter as tk
 
-class ToolTip:
-    def __init__(self, widget, text):
-        self.widget = widget
+class RoundedLabel(tk.Canvas):
+    def __init__(self, parent, text='', bg='white', fg='black', radius=10, **kwargs):
+        tk.Canvas.__init__(self, parent, **kwargs)
+        self.config(bg=bg, highlightthickness=0)
+        self.fg = fg
+        self.radius = radius
         self.text = text
-        self.widget.bind("<Enter>", self.show_tip)
-        self.widget.bind("<Leave>", self.hide_tip)
+        self.redraw()
 
-    def show_tip(self, event):
-        x, y, cx, cy = self.widget.bbox("insert")
-        x += self.widget.winfo_rootx() + 25
-        y += self.widget.winfo_rooty() + 20
-        # Créer une fenêtre de survol
-        self.tipwindow = tw = tk.Toplevel(self.widget)
-        tw.wm_overrideredirect(True)
-        tw.wm_geometry("+%d+%d" % (x, y))
-        label = tk.Label(tw, text=self.text, justify=tk.LEFT,
-                      background="#ffffe0", relief=tk.SOLID, borderwidth=1,
-                      font=("tahoma", "8", "normal"))
-        label.pack(ipadx=1)
-
-    def hide_tip(self, event):
-        tw = self.tipwindow
-        if tw:
-            tw.destroy()
+    def redraw(self):
+        self.delete('all')
+        width = self.winfo_width()
+        height = self.winfo_height()
+        r = self.radius
+        x1 = width/2 - r
+        y1 = height/2 - r
+        x2 = width/2 + r
+        y2 = height/2 + r
+        self.create_oval(x1, y1, x2, y2, fill=self['bg'], outline=self.fg)
+        self.create_text(width/2, height/2, text=self.text)
 
 root = tk.Tk()
-button = tk.Button(root, text="Hello")
-button.pack()
-ToolTip(button, "Ceci est une info-bulle")
+label = RoundedLabel(root, text='Hello World!', bg='red', fg='white', radius=50)
+label.pack(fill='both', expand=True)
 
 root.mainloop()

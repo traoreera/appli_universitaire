@@ -108,6 +108,7 @@ class Root:
                                                         text_color=("blue","white"),command=self.bt_segmented)
         self.segmentbt.place(x=200,y =0)     
 
+        
     def bt_segmented(self,value):
         #print(value)
         if value =="quit":
@@ -128,19 +129,23 @@ class Root:
 
         self.bt_chat = customtkinter.CTkButton(self.Menu_frame,text="Chat",font=("",12),width=40,height=45)
         self.bt_chat.place(x=0,y=50)
+        ToolTip(self.bt_chat,"for chat and an person on your univercity")
 
         ### bt setup all menu bt in one 
         self.bt_electrobinder = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
         self.bt_electrobinder.place(x=0,y=100)
+        ToolTip(self.bt_electrobinder,"to find electronicien in your univercity")
         ### bt setup all menu bt in one 
         
         self.bt_itech = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
         self.bt_itech.place(x=0,y=150)
+        ToolTip(self.bt_itech,"known invention on your univercity")
         
         ### bt setup all menu bt in one 
         
         self.setting_bt = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
         self.setting_bt.place(x=0,y=200)
+        ToolTip(self.setting_bt,"to configure tour interface with\nJSON file")
         ### bt setup all menu bt in one 
         
         self.bt_utm = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
@@ -150,9 +155,11 @@ class Root:
         
         self.bt_quit = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45)
         self.bt_quit.place(x=0,y=300)
+        ToolTip(self.bt_quit,"to exit ")
 
         self.bt_maj = customtkinter.CTkButton(self.Menu_frame,text="",font=("",12),width=40,height=45,)
         self.bt_maj.place(x=0,y=350)
+        ToolTip(self.bt_maj,"to verifed update for logitiel")
         ### bt setup all menu bt in one
         
         self.label_version = customtkinter.CTkLabel(master=self.Menu_frame,text="verion 1.0.1 dernier MAJ",font=("",10),text_color="#fff")
@@ -187,6 +194,8 @@ class ToolTip:
         # Créer une fenêtre de survol
         self.tipwindow = tw = tk.Toplevel(self.widget)
         tw.wm_overrideredirect(True)
+        tw.attributes('-alpha',0.8)
+        tw.attributes('-topmost',1)
         tw.wm_geometry("+%d+%d" % (x, y))
         label = tk.Label(tw, text=self.text, justify=tk.LEFT,
                       background="#ffffe0", relief=tk.SOLID, borderwidth=1,
