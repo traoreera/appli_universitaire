@@ -1,5 +1,5 @@
 import mysql.connector as connector
-
+import ri
 class New_user(): 
     
     def __init__(self) -> None:
@@ -49,7 +49,7 @@ class New_Compte:
         
         self.curseur = curseur # Curseur pour la base de donne 
         self.request = request # la requete a execute
-                
+
         
 
-connect(user="root",host="localhost",port="3306",password="hunters360X",dataBase="test")
+#connect(user="root",host="localhost",port="3306",password="hunters360X",dataBase="test")
