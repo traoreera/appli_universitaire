@@ -1,9 +1,8 @@
 
 import os
-
+import time
 
 class Reader:
-    
     def __init__(self,unloker) :
         files = os.listdir()
         print(files)
@@ -13,14 +12,9 @@ class Reader:
         print(self.files)
         self.stoked()
         self.unloker = unloker
-        
-        if self.unloker == 1:
-            
-            self.reader()
-        
-        elif self.unloker == 0:
-            
-            self.stopreader()
+        self.reader()
+        if self.unloker == 1:self.reader()
+        elif self.unloker == 0:self.stopreader()
 
     def stoked(self):
         with open('list','w') as file : file.write(f"{self.files}")
@@ -31,6 +25,7 @@ class Reader:
         
         try:
             self.file1 = open('drif.dat','r')
+            print('file reead')
         except (FileNotFoundError,FileExistsError):
             print("error") 
 
@@ -38,13 +33,8 @@ class Reader:
         
         try:
             self.file1.close()
-        except Exception:
-            
-            breakpoint()
-    
-        
-    
-        
+            print("file closed")
+        except Exception:breakpoint()
         
     
         
