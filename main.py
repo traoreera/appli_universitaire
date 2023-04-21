@@ -1,12 +1,7 @@
 import tkinter as tk
-import tkinter.messagebox as messagebox
 import customtkinter
 from PIL import ImageTk, Image
 from ico.ico_loads import *
-import os
-import datetime
-from command.commands import partail_inject_ui_ttk as partial, dropper
-import ctypes
 
 class Root:
 
@@ -27,21 +22,6 @@ class Root:
         Root.chortcut(self)
         self.root.mainloop()
         
-    def Root_register(self):
-    
-        try:
-            admin_modes = os.geteuid() == 0 # type: ignore
-        except AttributeError:
-            admin_modes = ctypes.windll.shell32.IsUserAnAdmin()
-
-        if not admin_modes:
-            print("no admin mods")
-            messagebox.showwarning(
-                title="admin", message="veuiller execute le logitiel en temp qu'administrateur du system")
-            quit()
-
-        else:
-            pass
 
     def _Font_Setup(self):
         try:
@@ -82,7 +62,6 @@ class Root:
             self.bodyframe.place_configure(x=50,y=30)
             self.homeframe.configure(width=1020,height=200)
             self.homeframe.place(x=0,y=0)
-            self.ProfileFrame.place(x=380,y=110)
         else :
             self.Menu_frame.configure(width=300)
             self.shadow_bt_menu.configure(image=self.arrow_left) # type: ignore
@@ -93,7 +72,6 @@ class Root:
             self.bodyframe.place_configure(x=310,y=30)
             self.homeframe.configure(width=760,height=200)
             self.homeframe.place(x=0,y=0)
-            self.ProfileFrame.place(x=300,y=110)
     
     def Bodyframe(self):
         self.bodyframe = customtkinter.CTkFrame(self.root, width=760,height=660,corner_radius=15,bg_color='transparent')
@@ -121,9 +99,7 @@ class Root:
         
         self.homeframe = customtkinter.CTkFrame(master=self.bodyframe,width=760,height=220,corner_radius=15,bg_color='transparent')
         self.homeframe.place(x=0,y=0)
-        self.ProfileFrame = customtkinter.CTkFrame(master=self.homeframe,corner_radius=100,bg_color='transparent')
 
-        self.ProfileFrame.place(x=300,y=110)
     
     def __button(self):  
 
@@ -174,7 +150,7 @@ class Root:
         
     def chortcut(self):   
         def hello(self):
-            print("heu")
+            quit()
         """"""
         self.root.bind("<Control-h>",hello)
 
