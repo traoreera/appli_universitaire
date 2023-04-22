@@ -62,6 +62,9 @@ class Root:
             self.bodyframe.place_configure(x=50,y=30)
             self.homeframe.configure(width=1020,height=200)
             self.homeframe.place(x=0,y=0)
+            self.profile.configure(width=200,height=180,)
+            self.profile.place_configure(x=0,y=10)
+            self.resize_bt.place(x=999,y=180)
         else :
             self.Menu_frame.configure(width=300)
             self.shadow_bt_menu.configure(image=self.arrow_left) # type: ignore
@@ -72,6 +75,9 @@ class Root:
             self.bodyframe.place_configure(x=310,y=30)
             self.homeframe.configure(width=760,height=200)
             self.homeframe.place(x=0,y=0)
+            self.profile.configure(width=200,height=180)
+            self.profile.place_configure(x=0,y=10)
+            self.resize_bt.place(x=700,y=180)
     
     def Bodyframe(self):
         self.bodyframe = customtkinter.CTkFrame(self.root, width=760,height=660,corner_radius=15,bg_color='transparent')
@@ -99,6 +105,31 @@ class Root:
         
         self.homeframe = customtkinter.CTkFrame(master=self.bodyframe,width=760,height=220,corner_radius=15,bg_color='transparent')
         self.homeframe.place(x=0,y=0)
+        
+        self.profile = customtkinter.CTkFrame(self.homeframe,height=200,corner_radius=15)
+        self.profile.place(x=0,y=10)
+        
+        self.info1= customtkinter.CTkFrame(self.homeframe,height=50,width=250,corner_radius=15)
+        self.info1.place(x=220,y=10)
+        
+        self.info2 = customtkinter.CTkFrame(self.homeframe,width=250,height=120)
+        self.info2.place(x=220,y=29)    
+
+        self.info3 = customtkinter.CTkFrame(self.homeframe,height=30,width=250,corner_radius=15)
+        self.info3.place(x=220,y=159)
+
+        self.description_label = customtkinter.CTkLabel(self.info2,text="description",width=250,height=120)
+        self.description_label.place(x=0,y=0)
+        
+        self.profile_ico =customtkinter.CTkLabel(self.profile,text="profile image")
+        self.profile_ico.place(x=50,y=100)
+        
+        self.username =customtkinter.CTkLabel(self.info3,text="username",)
+        self.username.place(x=0,y=0)
+        
+        self.resize_bt = customtkinter.CTkButton(self.homeframe,corner_radius=100,text=">>",height=45,width=40)
+        self.resize_bt.place(x=700,y=180)
+        
 
     
     def __button(self):  
@@ -182,6 +213,9 @@ class ToolTip:
         tw = self.tipwindow
         if tw:
             tw.destroy()
+
+
+
 
 
 

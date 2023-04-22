@@ -52,4 +52,4 @@ class New_Compte:
 
         
 
-#connect(user="root",host="localhost",port="3306",password="hunters360X",dataBase="test")
+connect(user="root",host="localhost",port="3306",password="hunters360X",dataBase="test")
