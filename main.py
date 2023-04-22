@@ -2,24 +2,25 @@ import tkinter as tk
 import customtkinter
 from PIL import ImageTk, Image
 from ico.ico_loads import Ico_Loads
-
+from search import Shearching
 
 class Root:
     def __init__(self):
 
         super(Root, self).__init__()
         # Root.Root_register(self)
-
+        Ico_Loads.Profile_image(self)# type: ignore
         Ico_Loads.ico_loads(self)   # type: ignore
         # README.ReadFile(self) # type: ignore
         Root.Configuration(self)
+        root =self.root
         Root._Font_Setup(self)
         Root._frameMenu(self)
         Root.Bodyframe(self)
         Root.HomeFrame(self)
         Root.SegmentButon(self)
         Root.__button(self)
-        Root.chortcut(self)
+        shortcut(root)
         self.root.mainloop()
 
     def _Font_Setup(self):
@@ -51,9 +52,11 @@ class Root:
         # configuration button
         self.shadow_bt_menu = customtkinter.CTkButton(master=self.Menu_frame, image=self.arrow_left, text="",bg_color="transparent", corner_radius=None, width=20, command=lambda: self.Resize_Menu())  # type: ignore
         self.shadow_bt_menu.place(x=250, y=5)
+        ToolTip(widget=self.shadow_bt_menu,text="resize bouton ")
 
     def Resize_Menu(self):
         if self.Menu_frame._current_width == 300:
+           
             self.Menu_frame.configure(width=40)
             self.shadow_bt_menu.configure(
                 image=self.arrow_right)  # type: ignore
@@ -62,12 +65,13 @@ class Root:
             # body main frame reconfigurate#
             self.bodyframe.configure(width=1020)
             self.bodyframe.place_configure(x=50, y=30)
-            self.homeframe.configure(width=1020, height=200)
+            self.homeframe.configure(width=1020, height=0) 
             self.homeframe.place(x=0, y=0)
             self.profile.configure(width=200, height=180,)
             self.profile.place_configure(x=0, y=10)
             
         else:
+            
             self.Menu_frame.configure(width=300)
             self.shadow_bt_menu.configure(
                 image=self.arrow_left)  # type: ignore
@@ -76,10 +80,14 @@ class Root:
             # body main frame reconfigurate#
             self.bodyframe.configure(width=760)
             self.bodyframe.place_configure(x=310, y=30)
+
+            
             self.homeframe.configure(width=760, height=200)
             self.homeframe.place(x=0, y=0)
+            
             self.profile.configure(width=200, height=180)
             self.profile.place_configure(x=0, y=10)
+
             
 
     def Bodyframe(self):
@@ -104,6 +112,9 @@ class Root:
                 self.root.destroy()
             finally:
                 pass
+        if value == "reload":
+            self.root.destroy()
+            Root()
 
     def HomeFrame(self):
 
@@ -112,7 +123,7 @@ class Root:
         self.homeframe.place(x=0, y=0)
 
         self.profile = customtkinter.CTkLabel(
-            self.homeframe, height=200,image=self.ico10,text="") 
+            self.homeframe, height=200,image=self.ico10,text="") #type: ignore
         self.profile.place(x=0, y=10)
 
 
@@ -135,8 +146,6 @@ class Root:
 
         self.username = customtkinter.CTkLabel(self.info3, text="username",)
         self.username.place(x=0, y=0)
-        
-        
         
     def __button(self):
 
@@ -172,10 +181,10 @@ class Root:
         ToolTip(self.bt_utm, text="buton UTM")
         # bt setup all menu bt in one
 
-        self.bt_quit = customtkinter.CTkButton(
-            self.Menu_frame, text="", font=("", 12), width=40, height=45)
-        self.bt_quit.place(x=0, y=300)
-        ToolTip(self.bt_quit, "to exit ")
+        self.pdf = customtkinter.CTkButton(
+            self.Menu_frame, text="", font=("", 12), width=40, height=45,command=lambda: self.pdflist())
+        self.pdf.place(x=0, y=300)
+        ToolTip(self.pdf, "liste des cours ")
 
         self.bt_maj = customtkinter.CTkButton(
             self.Menu_frame, text="", font=("", 12), width=40, height=45,)
@@ -192,12 +201,55 @@ class Root:
 
     def LoopTrap(self): pass
 
-    def chortcut(self):
-        def hello(self):
-            quit()
-        """"""
-        self.root.bind("<Control-h>", hello)
     
+    def pdflist(self):
+        def kk(self):
+            re  = search_bt.get()
+            print(re)
+        if self.Menu_frame._current_width == 300:
+            self.Resize_Menu()
+            self.pdf_list_frame = customtkinter.CTkFrame(self.bodyframe,width=1020,height=500)
+            self.pdf_list_frame.place(x=0,y=210)
+            
+            self.search = customtkinter.CTkFrame(self.pdf_list_frame,width=600,height=40,corner_radius=15)
+            self.search.place(x=200,y=10)
+            
+            search_bt = customtkinter.CTkEntry(self.search,width=600,height=40,placeholder_text="search pdf ...")# tupe: ignore
+            search_bt.place(x=50,y=0)
+            search_bt.bind("<KeyRelease>",kk)
+            self.pdf_list_frame.configure(width=1020,height=700)
+            self.pdf_list_frame.place(x=0,y=0)
+            self.search.place(x=200,y=10)
+            search_bt.place(x=0,y=0)
+            self.homeframe.place_forget()
+            lock = 0
+            Table_view(height=580,width=1000,fenetre=self.pdf_list_frame,lock=lock)
+        elif self.Menu_frame._current_width ==40:
+            self.Resize_Menu()
+            self.pdf_list_frame = customtkinter.CTkFrame(self.bodyframe,width=1020,height=500)
+            self.pdf_list_frame.place(x=0,y=210)
+            
+            self.search = customtkinter.CTkFrame(self.pdf_list_frame,width=600,height=40,corner_radius=15)
+            self.search.place(x=100,y=10)
+            
+            search_bt = customtkinter.CTkEntry(self.search,width=500,height=40,placeholder_text="search pdf ...")
+            search_bt.place(x=50,y=0)
+            self.HomeFrame()
+        
+            search_bt.bind("<keyRelease>",kk)
+
+
+class shortcut:
+    
+    def __init__(self,root):
+        super().__init__()
+        self.root=root
+        self.short()
+        
+    def short(self):
+        def hello(self):
+            quit()       
+        self.root.bind("<Control-h>",hello)
 
 
 class ToolTip:
@@ -227,5 +279,54 @@ class ToolTip:
             tw.destroy()
 
 
+class forget_widget:
+    
+    def __init__(self,wid1,wid2,wid3,wid4,wid5,wid6): 
+        super(forget_widget,self).__init__()
+        self.wid1 = wid1
+        self.wid2 = wid2
+        self.wid3 = wid3
+        self.wid4 = wid4
+        self.wid5 = wid5
+        self.wid6 = wid6
+        self.closed()
+        
+    def closed(self):
+        self.wid1.place_forget()
+        self.wid2.place_forget()
+        self.wid3.place_forget()
+        self.wid4.place_forget()
+        self.wid5.place_forget()
+        
+
+class Table_view:
+    
+    def __init__(self,height,
+                 width,
+                 fenetre,
+                 lock):
+        
+        self.width = width
+        self.height = height
+        self.fennetre = fenetre
+        self.Tables()
+        if lock == 0: 
+            self.listbox()
+        if lock == 1: pass
+    def Tables(self):
+        tables = customtkinter.CTkTabview(self.fennetre,width=self.width,height=self.height)
+        tables.place(x=10,y=60)
+        self.cour = tables.add("Cours")
+        self.exo = tables.add("Exercices")
+        self.tp = tables.add("TP")
+        tables.set("Exercices")
+           
+    def listbox(self):
+        
+        listbox = tk.Listbox(self.cour,width=100,height=100,bg="black",fg="white")
+        listbox.place(x=0,y=0)
+        listbox.insert(1, "Option 1")
+
+    
 if __name__ == "__main__":
     Root()

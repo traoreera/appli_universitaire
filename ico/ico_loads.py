@@ -37,7 +37,7 @@ class Ico_Loads():
         
         con = sqlite3.connect('ico.db')
         cur = con.cursor()
-        list_inage = [file for file in os.listdir() if file.endswith('jpg') if file.endswith('')]
+        list_inage = [file for file in os.listdir() if file.endswith('jpg') if file.endswith('png')]
         
         i = 0
         
