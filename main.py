@@ -224,6 +224,7 @@ class Root:
             self.homeframe.place_forget()
             lock = 0
             Table_view(height=580,width=1000,fenetre=self.pdf_list_frame,lock=lock)
+            
         elif self.Menu_frame._current_width ==40:
             self.Resize_Menu()
             self.pdf_list_frame = customtkinter.CTkFrame(self.bodyframe,width=1020,height=500)
@@ -311,7 +312,7 @@ class Table_view:
         self.fennetre = fenetre
         self.Tables()
         if lock == 0: 
-            self.listbox()
+            ListeSelection(master=self.cour,width=100,height=200)
         if lock == 1: pass
     def Tables(self):
         tables = customtkinter.CTkTabview(self.fennetre,width=self.width,height=self.height)
@@ -321,12 +322,24 @@ class Table_view:
         self.tp = tables.add("TP")
         tables.set("Exercices")
            
-    def listbox(self):
-        
-        listbox = tk.Listbox(self.cour,width=100,height=100,bg="black",fg="white")
-        listbox.place(x=0,y=0)
-        listbox.insert(1, "Option 1")
+ 
+ 
+class ListeSelection:
+    def __init__(self, master,width,height):
+        self.listbox = tk.Listbox(master,width=width,height=height,font=("Roboto",10),)
+        self.listbox.place(x=0,y=0)
 
+        self.listbox.insert(1, "Option 1")
+        self.listbox.insert(2, "Option 2")
+        self.listbox.insert(3, "Option 3")
+        self.listbox.bind("<<ListboxSelect>>", self.get_selected)
+
+
+    def get_selected(self, event):
+        selection = event.widget.curselection()
+        for i in selection:
+            print(event.widget.get(i))
+ 
     
 if __name__ == "__main__":
     Root()
