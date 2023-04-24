@@ -2,7 +2,6 @@ import tkinter
 import customtkinter
 from PIL import ImageTk,Image
 from ico.ico_loads import *
-from donnes.db_ import Data
 from ico.ico_loads import Ico_Loads
 
 class Login():

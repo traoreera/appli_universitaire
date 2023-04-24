@@ -1,23 +1,29 @@
-from tkinter import *
 
-class ListeSelection:
-    def __init__(self, master):
-        self.listbox = Listbox(master)
-        self.listbox.pack()
+import tkinter as tk
 
-        self.listbox.insert(1, "Option 1")
-        self.listbox.insert(2, "Option 2")
-        self.listbox.insert(3, "Option 3")
+def on_resize(event):
+    # get the new window size
+    width = event.width
+    height = event.height
 
-        self.listbox.bind("<<ListboxSelect>>", self.get_selected)
+    # calculate the new dimensions for the widget
+    widget_width = int(width * 0.5)
+    widget_height = int(height * 0.5)
 
-    def get_selected(self, event):
-        selection = event.widget.curselection()
-        for i in selection:
-            print(event.widget.get(i))
+    # place the widget at the center of the window
+    x = int(width / 2 - widget_width / 2)
+    y = int(height / 2 - widget_height / 2)
 
-root = Tk()
+    # configure the widget with the new dimensions and position
+    canvas.place(x = x, y = y, width = widget_width, height = widget_height)
 
-liste_selection = ListeSelection(root)
+root = tk.Tk()
+canvas = tk.Canvas(root)
 
+# bind the resize event to on_resize function
+root.bind("<Configure>", on_resize)
+tk.Label(root,text="hello").pack(padx=0,pady=10)
+tk.Label(root,text="hello").pack(padx=0,pady=20)
+tk.Label(root,text="hello").pack(padx=0,pady=30)
+tk.Label(root,text="hello").pack(padx=0,pady=40)
 root.mainloop()

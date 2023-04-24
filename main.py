@@ -2,7 +2,7 @@ import tkinter as tk
 import customtkinter
 from PIL import ImageTk, Image
 from ico.ico_loads import Ico_Loads
-from search import Shearching
+
 
 class Root:
     def __init__(self):
@@ -199,9 +199,6 @@ class Root:
         self.label_version.place(x=40, y=640)
         self.label_ico.place(x=10, y=630)
 
-    def LoopTrap(self): pass
-
-    
     def pdflist(self):
         def kk(self):
             re  = search_bt.get()
