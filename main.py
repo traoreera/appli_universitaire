@@ -145,8 +145,7 @@ class Root:
 
 
         self.username = customtkinter.CTkLabel(self.info3, text="username",)
-        self.username.place(x=0, y=0)
-        
+        self.username.place(x=0, y=0) 
     def __button(self):
 
         self.bt_chat = customtkinter.CTkButton(
