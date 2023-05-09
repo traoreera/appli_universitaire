@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "db_connection": {
+        "ip_addr": "localhost",
+        "db_user": "root",
+        "db_port": "3306",
+        "db_password": "hunters360X",
+        "data_name": "test"
+    },
+    "local_db": {
+        "DocumentRoot": {
+            "curent_path": ""
+        },
+        "certicat": {
+            "KeyFile": "",
+            "db_local_name": "",
+            "settings": "",
+            "default": true
+        }
+    }
+}
