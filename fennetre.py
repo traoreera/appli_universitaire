@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import customtkinter
 import tkinter as tk
-from tkinter import *
+from tkinter import * # type: ignore
 
 from ico.ico_loads import Ico_Loads
 from donnes import requesting as req
@@ -330,11 +330,7 @@ class ListeSelection:
             scroll.pack(side='right', fill='y')
             listbox = Listbox(value,yscrollcommand=scroll.set,width=100,
                             font=('Roboto',12),activestyle='none',background='#3d3d3d',fg='#fff')
-            
-            
-            
-            
-            #for i in range(100):listbox.insert(END,f"kj krjoj oijoidfbk iojofgb oijfoigb oijfogb oijoifg {i}")
+            for i in range(100):listbox.insert(END,f"kj krjoj oijoidfbk iojofgb oijfoigb oijfogb oijoifg {i}")
             listbox.pack(side='left',fill='both')
             scroll.configure(command=listbox.yview)
             listbox.configure(highlightbackground='#3d3d3d',)
