@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import customtkinter
 import tkinter as tk
-from tkinter import *  # type: ignore
+from tkinter import * # type: ignore
 
 from ico.ico_loads import Ico_Loads
 from donnes import requesting as req
@@ -51,7 +51,7 @@ class Windown():
         self.resize = customtkinter.CTkButton(
             self.menu, text="", image=self.right, width=40, height=45, command=self.Menu_resize)  # type: ignore
         self.resize.place(x=0, y=0)
-        ToolTip(widget=self.resize, text="resize menu")
+        ToolTip(widget=self.resize,text="resize menu")
 
     def Menu_resize(self):
 
@@ -144,8 +144,9 @@ class Buton:
 
         self.label_version = customtkinter.CTkLabel(
             master=self.Menu_frame, text="verion 1.0.1 dernier MAJ", font=("", 10), text_color="#fff")
-
+        
         self.label_version.place(x=0, y=700)
+        
 
 
 class ToolTip:
@@ -192,55 +193,72 @@ class Header_:
     def __init__(self, Widget):
         self.frame = Widget
         self._SearchBar()
+        self.SelectionFilierLevel()
         super().__init__()
 
-
-
-
     def _SearchBar(self):
+
         def user_search(self):
-            request = self.search_try.get()
+
+            request = search_try.get()
             if request == "":
                 print("valeur vide")
             else:
-                self.result = request
-        
-        def get_event_filier(event):
-            return event
-        
-        def get_event_level(event): 
-            return event
+                
+                with open('fillier','r') as file : fillier=file.read()
+                with open('level','r') as file : level = file.read()
+                if fillier and level:
+                    if fillier == "":fillier ='eii'
+                    if level == "":level='L1'
 
+                print(fillier, level,request)
+                
+                
+                
         frame = self.frame
-        
         _search_bar_frame = customtkinter.CTkFrame(
             frame, width=550, height=30, corner_radius=15)
         _search_bar_frame.place(x=350, y=10)
-        self.search_try = customtkinter.CTkEntry(
+        search_try = customtkinter.CTkEntry(
             _search_bar_frame, placeholder_text="rechercher un livre", height=30, width=500)
         Ico_Loads.ico_loads(self)  # type: ignore
-        self.search_try.place(x=0, y=0)
+        search_try.place(x=0, y=0)
         ico = customtkinter.CTkLabel(
             _search_bar_frame, text='', image=self.search)  # type: ignore
         ico.place(x=510, y=5)
-        self.search_try.bind("<KeyRelease>", command=user_search)
+        search_try.bind("<KeyRelease>", command=user_search)
+
+
+    def SelectionFilierLevel(self):
+        
+        frame = self.frame
 
         niveau = customtkinter.CTkOptionMenu(frame, corner_radius=10, values=[
-
-                                             'L1', 'L2', 'L3', 'Master1', 'Master2',], width=100, command=get_event_level)
+        
+                                             'L1', 'L2', 'L3', 'Master1', 'Master2',], width=100,command=self.niveau_etud)
         niveau.place(x=100, y=10)
 
         filier = customtkinter.CTkOptionMenu(frame, corner_radius=10, values=[
-                                             'rt', 'eii', 'gmp', 'btp', 'mi',], width=100, command=get_event_filier)
+                                             'rt', 'eii', 'gmp', 'btp', 'mi',], width=100,command=self.filier_return)
         filier.place(x=210, y=10)
-
-        filier.set('')
-        niveau.set('')
-        
-
-        search()
-        
     
+    def filier_return(self,event) :
+        try:
+            with open('fillier','w')as file:
+                file.write(f'{event}')
+        
+        except Exception as e :
+            print("erreur de lecture du fichier fillier")
+    
+    def niveau_etud(self,event) :
+        
+        try:
+            with open('level','w') as file:
+                file.write(f'{event}')
+        except Exception as e :
+            print('erreur de lecture du fichier level')
+        
+        
 
 class Body:
     """
@@ -273,7 +291,8 @@ class Body:
         self.pdf_frame = customtkinter.CTkFrame(
             self.frame, width=2000, height=1000)
         self.pdf_frame.place(x=0, y=0)
-
+    
+    
     def Tab_view(self):
         tables = customtkinter.CTkTabview(
             self.pdf_frame, width=self.width, height=self.height)
@@ -283,8 +302,9 @@ class Body:
         tp = tables.add("Travaux Pratiques")
         devoir = tables.add("devoir")
         tables.set("devoir")
+        
+        ListeSelection(master=cour,master1=exo,master2=tp,master3=devoir)
 
-        ListeSelection(master=cour, master1=exo, master2=tp, master3=devoir)
 
 
 class shortcut:
@@ -327,36 +347,30 @@ class shortcut:
 class ListeSelection:
     def __init__(self, **master):
 
-        for _, value in master.items():
-
+        for  _,value in master.items(): 
+        
             scroll = customtkinter.CTkScrollbar(value)
             scroll.pack(side='right', fill='y')
-            listbox = Listbox(value, yscrollcommand=scroll.set, width=100,
-                              font=('Roboto', 12), activestyle='none', background='#3d3d3d', fg='#fff')
-
-            for i in range(100):
-                listbox.insert(
-                    END, f"kj krjoj oijoidfbk iojofgb oijfoigb oijfogb oijoifg {i}")
-
-            listbox.pack(side='left', fill='both')
+            listbox = Listbox(value,yscrollcommand=scroll.set,width=100,
+                            font=('Roboto',12),activestyle='none',background='#3d3d3d',fg='#fff')
+            
+            for i in range(100):listbox.insert(END,f"kj krjoj oijoidfbk iojofgb oijfoigb oijfogb oijoifg {i}")
+            
+            listbox.pack(side='left',fill='both')
             scroll.configure(command=listbox.yview)
             listbox.configure(highlightbackground='#3d3d3d',)
             listbox.bind("<<ListboxSelect>>", self.get_selected)
 
     def get_selected(self, event):
-        selection = event.widget.curselection()
-        for i in selection:
-            print("votre selection est :", event.widget.get(i))
-            choise = event.widget.get(i)
+            selection = event.widget.curselection()
+            for i in selection:
+                print("votre selection est :",event.widget.get(i))
+                choise = event.widget.get(i)
+            
 
 
-class search:
-
-    def __init__(self,**result):
-
-        for key, values in result.items():
-
-            print(f"la cle est :{key} et de valeur {values}")
+     
+    
 
 
 if __name__ == "__main__":
