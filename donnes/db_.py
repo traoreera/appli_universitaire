@@ -1,5 +1,4 @@
-import mysql.connector as connector
-import ri
+import mysql.connector as con
 class New_user(): 
     
     def __init__(self) -> None:
@@ -28,17 +27,12 @@ class connect:
         
     def _Connect(self):
         try:
-            mydb = connector.connect(host=self.host,user=self.user,password=self.password,database=self._db_base)
+            mydb = con.connect(host=self.host,user=self.user,password=self.password,database=self._db_base)
             curseur = mydb.cursor()
-            print("connected of successfull")
-            self._verifed(curseur)
-            
+            print("connected of successfull")      
+            curseur.execute('select * from cours where niveau')
+            pdf = curseur.fetchone()        
         except Exception as e : print(e)
-        
-        
-    def _verifed(self,curseur):
-        results =curseur.execute("select * from login")
-        print(results)
         
 
 

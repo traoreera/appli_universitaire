@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "hunters",
+            "request": "launch",
+            "mainClass": "hunters",
+            "projectName": "appli_universitaire_1c70bebd"
+        },
+        {
             "name": "Attach to Chrome",
             "port": 9222,
             "request": "attach",
