@@ -1,0 +1,27 @@
+		Login Log file ui and db error 
+					description: log file
+						author	   : hunters tech io
+						email 	   : traoreera@gmail.com | traoreera01@gmail.com
+					
+					information:
+						les fichier log peut etre edite lie et modifier 
+
+information: annee : 2023 | mois : 6 | heure :15 | minute : 21
+Erreur :
+	local variable 'i' referenced before assignment
+
+information: annee : 2023 | mois : 6 | heure :18 | minute : 0
+Erreur :
+	local variable 'i' referenced before assignment
+
+information: annee : 2023 | mois : 6 | heure :18 | minute : 7
+Erreur :
+	local variable 'i' referenced before assignment
+
+information: annee : 2023 | mois : 6 | heure :11 | minute : 5
+Erreur :
+	local variable 'i' referenced before assignment
+
+information: annee : 2023 | mois : 6 | heure :12 | minute : 41
+Erreur :
+	local variable 'i' referenced before assignment
