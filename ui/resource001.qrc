@@ -1,0 +1,19 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource>
+        <file>images/darck.png</file>
+        <file>images/Icon feather-settings.png</file>
+        <file>images/Icon metro-books.png</file>
+        <file>images/Icon_user.png</file>
+        <file>images/light.png</file>
+        <file>images/panoramique.jpg</file>
+        <file>images/UTM-logo-200214-02.jpg</file>
+        <file>images/UTM-logo-200214-03.jpg</file>
+        <file>images/UTM-logo-200214-04.jpg</file>
+        <file>images/UTM-logo-200214-05.jpg</file>
+        <file>images/xssxss.png</file>
+    </qresource>
+</RCC>
+
+
+
