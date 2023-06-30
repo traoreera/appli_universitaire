@@ -17,7 +17,7 @@ Item{
                 else{light_mode.running = true;light_image.running = true;darck_text.running = true;} 
 
             }
-            ColorAnimation 
+        ColorAnimation 
             {
                 id: drack_mode
                 target: themes_frame
@@ -27,7 +27,7 @@ Item{
                 duration: 2500
                 easing.type: Easing.InOutQuad
             }
-            ColorAnimation
+        ColorAnimation
             {
                 id: light_mode
                 target: themes_frame
@@ -37,7 +37,7 @@ Item{
                 duration: 2500
                 easing.type: Easing.InOutQuad     
             }
-            PropertyAnimation
+        PropertyAnimation
             {
                 id: darck_image
                 target: ico_themes
@@ -47,7 +47,7 @@ Item{
                 duration: 2500
                 easing.type: Easing.InOutQuad
             }
-            PropertyAnimation 
+        PropertyAnimation 
             {
                 id: light_image
                 target: ico_themes
@@ -57,7 +57,7 @@ Item{
                 duration: 2500
                 easing.type: Easing.InOutQuad
             }
-            PropertyAnimation 
+        PropertyAnimation 
             {
                 id: light_text
                 target: theme_mode
