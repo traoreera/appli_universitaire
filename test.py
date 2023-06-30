@@ -7,7 +7,7 @@ if __name__ == "__main__":
     engine = QQmlApplicationEngine()
 
     # Charger le fichier QML
-    engine.load("test.qml")
+    engine.load("test2.qml")
 
     if not engine.rootObjects():
         sys.exit(-1)

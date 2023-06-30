@@ -1,53 +1,51 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.12
 
-ApplicationWindow {
-    visible: true
-    width: 400
-    height: 300
-    title: "Switch avec deux interfaces"
+Rectangle
+{
+anchors.fill: parent
+Image
 
-    StackView {
-        id: stackView
-        anchors.fill: parent
-        initialItem: page1 // Page initiale
+{
+anchors.fill: parent
+source: "./ico/panoramique.jpg"
+fillMode: Image.PreserveAspectCrop
+Frame
+{
+opacity: 0.5
+id: header
+height: fennetre.height
+width: fennetre.width
+anchors.centerIn: parent
 
-        Component.onCompleted: {
-            // Définir la fenêtre source pour les transitions
-            stackView.window.source = parent;
-        }
+background: Rectangle { color: 'black'}
+}
+Frame
 
-        // Première page
-        Component {
-            id: page1
-            Rectangle {
-                width: parent.width
-                height: parent.height
-                color: "lightblue"
+{
+width: fennetre.width
+height: 150
+x: 0
+y:-10
+background: Rectangle
+{
+color: '#2B2B2B'
+//radius: 15
+}
+}
+}
+Frame
+{
+anchors.horizontalCenter: parent.horizontalCenter
+y: 200
+width: 450
+height: 300
+opacity: 0.5
+background: Rectangle
+{
+color: '#2B2B2B'
+radius:15
+}
 
-                Button {
-                    anchors.centerIn: parent
-                    text: "Passer à la page 2"
-                    onClicked: stackView.push(page2)
-                }
-            }
-        }
-
-        // Deuxième page
-        Component {
-            id: page2
-            Rectangle {
-                width: parent.width
-                height: parent.height
-                color: "lightgreen"
-
-                Button {
-                    anchors.centerIn: parent
-                    text: "Revenir à la page 1"
-                    onClicked: stackView.pop()
-                }
-            }
-        }
-    }
+}
 }

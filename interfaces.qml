@@ -171,7 +171,6 @@ ApplicationWindow
                 placeholderText: "password"
                 width: parent.width -20
                 height: 40
-                color: "blue"
                 font.bold: true
                 font.pixelSize: 12
                 
