@@ -5,18 +5,19 @@ import QtQuick.Layouts 1.4
 
 Item{
     id: main
+    function changeColor() 
+            {
+                if (themes_frame.color =='#001741'){drack_mode.running = true; darck_image.running = true;light_text.running = true;}
+                else{light_mode.running = true;light_image.running = true;darck_text.running = true;} 
+            }
+            
         Rectangle
         {
             id: themes_frame
             anchors.fill: parent
             color: "#001741"
 
-            function changeColor() 
-            {
-                if (themes_frame.color =='#001741'){drack_mode.running = true; darck_image.running = true;light_text.running = true;}
-                else{light_mode.running = true;light_image.running = true;darck_text.running = true;} 
 
-            }
         ColorAnimation 
             {
                 id: drack_mode
@@ -27,8 +28,7 @@ Item{
                 duration: 2500
                 easing.type: Easing.InOutQuad
             }
-        ColorAnimation
-            {
+        ColorAnimation{
                 id: light_mode
                 target: themes_frame
                 property: "color"
@@ -37,8 +37,8 @@ Item{
                 duration: 2500
                 easing.type: Easing.InOutQuad     
             }
-        PropertyAnimation
-            {
+        PropertyAnimation{
+
                 id: darck_image
                 target: ico_themes
                 property: "source"
@@ -47,8 +47,8 @@ Item{
                 duration: 2500
                 easing.type: Easing.InOutQuad
             }
-        PropertyAnimation 
-            {
+        PropertyAnimation{
+
                 id: light_image
                 target: ico_themes
                 property: "source"
@@ -57,8 +57,8 @@ Item{
                 duration: 2500
                 easing.type: Easing.InOutQuad
             }
-        PropertyAnimation 
-            {
+        PropertyAnimation {
+
                 id: light_text
                 target: theme_mode
                 property: "text"
@@ -78,8 +78,8 @@ Item{
             easing.type: Easing.InOutQuad
         }
 
-            Frame
-            {
+            Frame{
+
                 background: Rectangle {
                     color: '#940308'
                 }
@@ -87,28 +87,6 @@ Item{
                 height: 150
                 x: 0
                 y: 0
-
-                //anchors.centerIn: parent
-
-                Frame{
-                    width: fennetre.width
-                    height: 150
-                    anchors.centerIn: parent
-                    background: Rectangle
-                    {
-                        opacity: 0.4 // opacite a 40%
-                        width: fennetre.width
-                        height: 150
-                        Image
-                        {
-                            width: fennetre.width
-                            height:150
-                            anchors.centerIn: parent
-                            source: "./ico/panoramique.jpg"
-                            fillMode: Image.PreserveAspectCrop
-                        }
-                    }
-                }
             }
             
             Frame{
@@ -133,8 +111,7 @@ Item{
                         radius: 100
                         color: 'white'
                     }
-                    Image
-                    {
+                    Image{
                         source: "./ico/Icon_user.png"
                         width: 100
                         height: 100
@@ -144,38 +121,42 @@ Item{
                 
                 
                 
-                TextField
-                {
+                TextField{
+
                     id: username
                     anchors.horizontalCenter: parent.horizontalCenter
                     y: 200
                     placeholderText: "username"
+                    horizontalAlignment: Text.AlignHCenter
                     width: parent.width -20
                     height: 40
+                    maximumLength: 40
                     font.pixelSize: 12
                     font.bold: true
-                    background: Rectangle
-                    {
-                        radius: 15
+                    background: Rectangle{
+                        radius: 20
                         color: "white"
                         border.color: 'gray'    
                     }
                 }
-                TextField
-                    {
+                TextField{
+
                         id: password
                         anchors.horizontalCenter: parent.horizontalCenter 
                         y: 250
                         placeholderText: "password"
+                        maximumLength: 30
+                        horizontalAlignment: Text.AlignHCenter
                         width: parent.width -20
+                        echoMode: TextInput.Password
                         height: 40
-                        color: "blue"
+                        color: "black"
                         font.bold: true
                         font.pixelSize: 12
                         
                         background: Rectangle
                         {
-                            radius: 15
+                            radius: 20
                             color: "white"
                             border.color: 'gray'    
                         }
@@ -191,14 +172,14 @@ Item{
 
                     background: Rectangle {
                         color: login_bt.hovered ? "transparent" : "#940308"
-                        radius: 15
+                        radius: 20
                         border.width: 1
                         border.color: "transparent"
                     }
 
                     contentItem: Text {
                         text: login_bt.text
-                        color: login_bt.hovered ? "black" : "black"
+                        color: login_bt.hovered ? "white" : "white"
                         font.bold: true
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
@@ -225,8 +206,7 @@ Item{
                     }
                 }
 
-                Text
-                {
+                Text{
                     id: new_count
 
                     text: qsTr("Si vous n'avez pas de pseudo")
@@ -239,8 +219,7 @@ Item{
                     opacity: 1
                 }
 
-                Button
-                {
+                Button {
                     id: new_compte
                     text: "Inscrivez-vous"
                     font.bold: true
@@ -252,8 +231,8 @@ Item{
                         color: 'transparent'
                         border.width: 0
                     }
-                    contentItem: Text
-                    {
+                    contentItem: Text{
+
                         text: new_compte.text
                         color: 'white'
                         font.bold: true
@@ -266,8 +245,7 @@ Item{
                     onClicked: stackView.push(newCompte)
                 }
             }
-            Button 
-            {
+            Button  {
                 id: theme_mode
                 text: "Passer au mode nuit      "
                 anchors.bottom: parent.bottom 
@@ -285,8 +263,8 @@ Item{
                     font.bold: false
                     font.pixelSize: 15
                     }
-                Image
-                {
+                Image{
+
                     id: ico_themes
                     source: "./ico/darck.png"
                     anchors.right: parent.right
@@ -295,10 +273,7 @@ Item{
                     
                     
                 }
-                onClicked: 
-                {
-                    changeColor();
-                }
+                onClicked: {changeColor();}
             }
         }
 }

@@ -42,8 +42,6 @@ Item
         duration: 2500
         easing.type: Easing.InOutQuad
     }
-
-
     PropertyAnimation {
         id: light_image
         target: ico_themes
@@ -53,8 +51,6 @@ Item
         duration: 2500
         easing.type: Easing.InOutQuad
     }
-
-
     PropertyAnimation {
         id: light_text
         target: theme_mode
@@ -95,28 +91,95 @@ Item
 
 
             Frame{
-            width: fennetre.width
-            height: 150
-            x: 0
-            y:-10
-            background: Rectangle
-            {
-            color: '#2B2B2B'
-            //radius: 15
+                //id:
+                width: fennetre.width
+                height: 150
+                x: 0
+                y:-10
+                background: Rectangle
+                {
+                    color: '#001741'
+                }
             }
+
+            Frame{
+                    width: 130
+                    height: 130
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    y: 150
+                    background: Rectangle
+                    {
+                        radius: 100
+                        color: 'white'
+                    }
+                    Image
+                    {
+                        source: "./ico/Icon_user.png"
+                        width: 100
+                        height: 100
+                        anchors.centerIn: parent
+                    }
+                }
+            Column{
+                spacing: 20
+                anchors.horizontalCenter: parent.horizontalCenter
+                y: 310
+                TextField{
+
+                        id: nom
+                        placeholderText: "nom"
+                        horizontalAlignment: Text.AlignHCenter
+                        width: 330
+                        height: 40
+                        maximumLength: 40
+                        font.bold: true
+                        font.pixelSize: 12
+
+                        background: Rectangle{
+                            radius: 20
+                            color: "white"
+                            border.color: 'transparent'    
+                                
+                        }
+                    }
+                TextField{
+
+                    id: prenom
+                    placeholderText: "Prenom"
+                    horizontalAlignment: Text.AlignHCenter
+                    width: 330
+                    height: 40
+                    maximumLength: 40
+                    font.bold: true
+                    font.pixelSize: 12
+
+                    background: Rectangle{
+                        radius: 20
+                        color: "white"
+                        border.color: 'transparent'    
+                            
+                    }
+                }
+                TextField{
+
+                    id: codeEtudiant
+                    placeholderText: "Code Etudiant"
+                    horizontalAlignment: Text.AlignHCenter
+                    width: 330
+                    height: 40
+                    maximumLength: 40
+                    font.bold: true
+                    font.pixelSize: 12
+
+                    background: Rectangle{
+                        radius: 20
+                        color: "white"
+                        border.color: 'transparent'    
+                            
+                    }
+                }
             }
-        }
-        Frame{
-            anchors.horizontalCenter: parent.horizontalCenter
-            y: 200
-            width: 450
-            height: 300
-            opacity: 0.5
-            background: Rectangle
-            {
-            color: '#2B2B2B'
-            radius:15
-            }
+
         }
 
         Button{

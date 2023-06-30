@@ -4,8 +4,8 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Layouts 1.4
 
 // fenetre principale
-ApplicationWindow 
-{
+ApplicationWindow {
+
     id: fennetre
     visible: true
     minimumWidth: 900
@@ -13,8 +13,7 @@ ApplicationWindow
     title: qsTr("Login")
     
     
-    StackView 
-    {
+    StackView {
         /*
             stack view permet de change de fennetre en fonction de du login ou de la creation de compte
             
@@ -36,8 +35,7 @@ ApplicationWindow
                 source: './login.qml'
             }
         }
-        Component
-        {
+        Component{
             id: newCompte
 
             Loader

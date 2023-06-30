@@ -19,7 +19,7 @@ class Login_Interface:
             context = engine.rootContext()
             scriptRunner = login.ScriptRunner()
             context.setContextProperty("scriptRunner", scriptRunner)
-            engine.load("interfaces.qml")
+            engine.load("ui\\interfaces.qml")
             sys.exit(self.app.exec_())
         except Exception as e:
             db__.__runner__(self=db__, erreur=e,
