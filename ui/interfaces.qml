@@ -12,6 +12,7 @@ ApplicationWindow
     minimumHeight: 650
     title: qsTr("Login")
     
+    
     StackView 
     {
         /*
@@ -29,7 +30,11 @@ ApplicationWindow
         
         Component
         {
-            id: fennetreLogin 
+            id: fennetreLogin
+            Loader
+            {
+                source: './login.qml'
+            }
         }
         Component
         {
@@ -37,7 +42,7 @@ ApplicationWindow
 
             Loader
             {
-                source: './test.qml'
+                source: './newcompte.qml'
             }
         }
             
