@@ -1,7 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtQml import QQmlApplicationEngine
-
 class __Login__:
     
     def __init__(self) :
@@ -16,7 +15,7 @@ class __Login__:
             engine = QQmlApplicationEngine()
 
             # Charger le fichier QML
-            engine.load("ui\\interfaces.qml")
+            engine.load("test.qml")
 
             if not engine.rootObjects():
                 sys.exit(-1)
