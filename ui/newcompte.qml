@@ -6,6 +6,7 @@ StackView{
     id: info
     initialItem: firstInfo
     anchors.fill: parent
+
     Component.onCompleted: {
         info.window.source = parent;
     }
@@ -114,15 +115,15 @@ StackView{
                                 height: 40
 
                                 background: Rectangle {
-                                    color: login_bt.hovered ? "transparent" : "#940308"
+                                    color: suivant.hovered ? "transparent" : "#940308"
                                     radius: 20
                                     border.width: 1
                                     border.color: "transparent"
                                 }
 
                                 contentItem: Text {
-                                    text: login_bt.text
-                                    color: login_bt.hovered ? "white" : "white"
+                                    text: suivant.text
+                                    color: suivant.hovered ? "white" : "white"
                                     font.bold: true
                                     horizontalAlignment: Text.AlignHCenter
                                     verticalAlignment: Text.AlignVCenter
@@ -203,6 +204,7 @@ StackView{
                             TextField{
                                 id: passwd
                                 placeholderText: "mot de passe"
+                                echoMode: TextInput.Password
                                 horizontalAlignment: Text.AlignHCenter
                                 width: 330
                                 height: 40
@@ -218,6 +220,7 @@ StackView{
                             TextField {
                                 id: confirmpass
                                 placeholderText: "confirme le mot de pass"
+                                echoMode: TextInput.Password
                                 horizontalAlignment: Text.AlignHCenter
                                 width: 330
                                 height: 40
@@ -254,15 +257,15 @@ StackView{
                                 height: 40
 
                                 background: Rectangle {
-                                    color: login_bt.hovered ? "transparent" : "#940308"
+                                    color: inscription.hovered ? "transparent" : "#940308"
                                     radius: 20
                                     border.width: 1
                                     border.color: "transparent"
                                 }
 
                                 contentItem: Text {
-                                    text: login_bt.text
-                                    color: login_bt.hovered ? "white" : "white"
+                                    text: inscription.text
+                                    color: inscription.hovered ? "white" : "white"
                                     font.bold: true
                                     horizontalAlignment: Text.AlignHCenter
                                     verticalAlignment: Text.AlignVCenter
