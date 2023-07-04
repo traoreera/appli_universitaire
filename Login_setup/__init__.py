@@ -59,12 +59,7 @@ class __log:
 						les fichier log peut etre edite lie et modifier """)
                     file.write(f'\n\ninformation: annee : {self.annee} | mois : {self.mois} | heure :{self.heure} | minute : {self.minute}\nErreur :\n\t{erreur}')
     
-        
-        
-        
 class db__(__log):
-    
-    
     """_summary_
 
     Args:

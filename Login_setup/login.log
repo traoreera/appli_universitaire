@@ -25,3 +25,7 @@ Erreur :
 information: annee : 2023 | mois : 6 | heure :12 | minute : 41
 Erreur :
 	local variable 'i' referenced before assignment
+
+information: annee : 2023 | mois : 7 | heure :11 | minute : 38
+Erreur :
+	local variable 'i' referenced before assignment

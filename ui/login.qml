@@ -136,7 +136,7 @@ Item{
                     background: Rectangle{
                         radius: 20
                         color: "white"
-                        border.color: 'gray'    
+                        border.color: 'transparent'    
                     }
                 }
                 TextField{
@@ -158,7 +158,7 @@ Item{
                         {
                             radius: 20
                             color: "white"
-                            border.color: 'gray'    
+                            border.color: 'transparent'    
                         }
                     }
                         
@@ -201,8 +201,9 @@ Item{
 
                     onClicked: 
                     {
+                        /*
                         scriptRunner.getusername(username.text)   
-                        scriptRunner.getpassword(password.text)
+                        scriptRunner.getpassword(password.text)*/
                     }
                 }
 

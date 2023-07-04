@@ -1,26 +1,24 @@
 import sys
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtQml import QQmlApplicationEngine
-class __Login__:
-    
-    def __init__(self) :
-        
-        self.__Run_Login()
-        
-        super(__Login__,self)
-    
-    def __Run_Login(self):
-        if __name__ == "__main__":
-            app = QApplication(sys.argv)
-            engine = QQmlApplicationEngine()
+from PySide2.QtCore import QObject, Signal, Slot, Property
+from PySide2.QtGui import QGuiApplication
+from PySide2.QtQml import QQmlApplicationEngine
+import subprocess
 
-            # Charger le fichier QML
-            engine.load("test.qml")
+class CommandRunner(QObject):
+    outputChanged = Signal(str)
 
-            if not engine.rootObjects():
-                sys.exit(-1)
+    @Slot(str)
+    def runCommand(self, command):
+        try:
+            result = subprocess.check_output(command, shell=True)
+            output = result.decode("utf-8")
+        except subprocess.CalledProcessError as e:
+            output = e.output.decode("utf-8")
+        self.outputChanged.emit(output)
 
-            sys.exit(app.exec_())
-
-
-__Login__()
+app = QGuiApplication(sys.argv)
+engine = QQmlApplicationEngine()
+commandRunner = CommandRunner()
+engine.rootContext().setContextProperty("commandRunner", commandRunner)
+engine.load("test.qml")
+sys.exit(app.exec_())

@@ -21,7 +21,6 @@ ApplicationWindow {
         id: stackView
         initialItem: fennetreLogin
         anchors.fill: parent
-
         Component.onCompleted: 
         {
             stackView.window.source = parent;
